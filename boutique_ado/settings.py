@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 if os.path.exists("env.py"):
     import env
@@ -34,9 +34,9 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # Set ALLOWED_HOSTS based on the DEBUG variable
 if DEBUG:
-    ALLOWED_HOSTS = [os.environ.get('LOCALHOST', '127.0.0.1')]
+    ALLOWED_HOSTS = [os.environ.get('LOCALHOST')]
 else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME', '')]
+    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 print(f"DEBUG: {DEBUG}")
 print(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -73,13 +76,25 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request', # Required by Allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+]
+
+SITE_ID = 1
 
 WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 
