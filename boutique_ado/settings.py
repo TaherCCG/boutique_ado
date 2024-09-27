@@ -36,7 +36,7 @@ STRIPE_TEST_SECRET_KEY = os.getenv('STRIPE_TEST_SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 
-ALLOWED_HOSTS = ["boutique-ado-ci-ccg.herokuapp.com", ""]
+ALLOWED_HOSTS = ["boutique-ado-ci-ccg-1df1bb3f13e6.herokuapp.com", ""]
 # Set ALLOWED_HOSTS based on the DEBUG variable
 # if DEBUG:
 #     ALLOWED_HOSTS = [os.environ.get('LOCALHOST')]
