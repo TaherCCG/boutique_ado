@@ -46,7 +46,6 @@ ALLOWED_HOSTS = ["boutique-ado-ci-ccg.herokuapp.com", ""]
 print(f"DEBUG: {DEBUG}")
 print(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
 
-
 # Application definition
 
 INSTALLED_APPS = [
