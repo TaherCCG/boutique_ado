@@ -33,7 +33,7 @@ STRIPE_TEST_PUBLIC_KEY = os.getenv('STRIPE_TEST_PUBLIC_KEY')
 STRIPE_TEST_SECRET_KEY = os.getenv('STRIPE_TEST_SECRET_KEY')
 
 # Set the DEBUG variable based on the environment variable
-DEBUG = DEVELOPMENT in os.environ.get
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 
 ALLOWED_HOSTS = ["boutique-ado-ci-ccg-1df1bb3f13e6.herokuapp.com", ""]
