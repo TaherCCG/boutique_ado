@@ -36,11 +36,12 @@ STRIPE_TEST_SECRET_KEY = os.getenv('STRIPE_TEST_SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 
+ALLOWED_HOSTS = ["boutique-ado-ci-ccg.herokuapp.com", ""]
 # Set ALLOWED_HOSTS based on the DEBUG variable
-if DEBUG:
-    ALLOWED_HOSTS = [os.environ.get('LOCALHOST')]
-else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
+# if DEBUG:
+#     ALLOWED_HOSTS = [os.environ.get('LOCALHOST')]
+# else:
+#     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 print(f"DEBUG: {DEBUG}")
 print(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
@@ -123,7 +124,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
