@@ -26,14 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY','')
 
 # Stripe
 STRIPE_TEST_PUBLIC_KEY = os.getenv('STRIPE_TEST_PUBLIC_KEY')
 STRIPE_TEST_SECRET_KEY = os.getenv('STRIPE_TEST_SECRET_KEY')
 
 # Set the DEBUG variable based on the environment variable
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = DEVELOPMENT in os.environ.get
 
 
 ALLOWED_HOSTS = ["boutique-ado-ci-ccg-1df1bb3f13e6.herokuapp.com", ""]
